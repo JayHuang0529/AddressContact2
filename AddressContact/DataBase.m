@@ -53,4 +53,19 @@
         
     }
 }
++ (void)deletePeopleDataBaseWithPeopleID:(NSInteger)peopleID
+{
+    if ([self openDataBase]) {
+        NSString *sql = [NSString stringWithFormat:@"delete *from People where id = %ld",peopleID];
+        [_DB executeUpdate:sql];
+        if ([_DB executeUpdate:sql]==NO) {
+            NSLog(@"删除People失败");
+        }
+        [_DB close];
+    }
+}
++ (void)deleteTelDataBaseWithNum:(NSInteger)num
+{
+    
+}
 @end
